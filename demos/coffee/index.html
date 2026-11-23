@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coffee Point — демосайт кав'ярні</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+  :root { --bg:#f5eee4; --card:#fffaf3; --ink:#2a1c12; --muted:#7a6656; --brown:#6a3d20; --green:#35604a; --line:#e5d6c3; --serif:"Lora", Georgia, serif; --sans:"Manrope", system-ui, sans-serif; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--sans); line-height:1.55; }
+  img { display:block; max-width:100%; }
+  .wrap { width:min(100% - 48px, 1200px); margin:auto; }
+  .demo-bar { background:var(--ink); color:#f5eee4; text-align:center; font-size:12.5px; font-weight:600; padding:7px 12px; }
+  .demo-bar a { color:#ffd6a0; font-weight:800; }
+  header .wrap { display:flex; justify-content:space-between; align-items:center; padding:22px 0; }
+  .logo { font-family:var(--serif); font-weight:600; font-size:26px; color:var(--brown); letter-spacing:-.01em; }
+  .logo span { color:var(--green); font-style:italic; }
+  nav { display:flex; gap:30px; font-weight:600; font-size:15px; }
+  nav a { color:var(--ink); text-decoration:none; opacity:.75; }
+  nav a:hover { opacity:1; }
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; height:52px; padding:0 26px; background:var(--brown); color:#fff; border:0; border-radius:999px; font:700 15px var(--sans); cursor:pointer; text-decoration:none; transition:background .2s; }
+  .btn:hover { background:#55301a; }
+  .btn.light { background:transparent; color:var(--brown); box-shadow:inset 0 0 0 2px var(--brown); }
+  .btn:disabled { opacity:.45; cursor:not-allowed; }
+  .hero { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; padding:32px 0 96px; }
+  .hero .tag { display:inline-block; padding:8px 14px; border-radius:999px; background:#eadcc8; font-weight:700; font-size:13px; color:var(--brown); margin-bottom:22px; }
+  .hero h1 { font-family:var(--serif); font-weight:600; font-size:clamp(42px,5.6vw,76px); line-height:1.02; margin:0 0 22px; letter-spacing:-.02em; }
+  .hero h1 em { color:var(--green); }
+  .hero p { font-size:19px; color:var(--muted); max-width:470px; margin:0 0 32px; }
+  .hero .actions { display:flex; gap:12px; flex-wrap:wrap; }
+  .badges { display:flex; gap:32px; flex-wrap:wrap; margin-top:44px; color:var(--muted); font-size:14px; }
+  .badges b { display:block; color:var(--ink); font-size:20px; }
+  .hero-img { position:relative; }
+  .hero-img img { width:100%; aspect-ratio:4/4.4; object-fit:cover; border-radius:220px 220px 28px 28px; }
+  .hero-img .float { position:absolute; left:-28px; bottom:40px; background:var(--card); border-radius:20px; padding:16px 20px; box-shadow:0 20px 40px -20px rgba(42,28,18,.4); font-size:14px; }
+  .hero-img .float b { display:block; font-size:16px; }
+  section { padding:96px 0; }
+  h2 { font-family:var(--serif); font-weight:600; font-size:clamp(34px,4vw,52px); margin:0 0 12px; letter-spacing:-.02em; }
+  .sub { color:var(--muted); margin:0 0 32px; font-size:17px; }
+  .layout { display:grid; grid-template-columns:1fr 360px; gap:32px; align-items:start; }
+  .cats { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:24px; }
+  .cat { background:transparent; border:1.5px solid var(--line); border-radius:999px; padding:10px 18px; font:700 14px var(--sans); cursor:pointer; color:var(--ink); }
+  .cat[aria-pressed="true"] { background:var(--ink); border-color:var(--ink); color:#fff; }
+  .menu { display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:16px; }
+  .item { background:var(--card); border:1px solid var(--line); border-radius:22px; overflow:hidden; display:flex; flex-direction:column; }
+  .item .ph { aspect-ratio:16/10; overflow:hidden; background:#e8dccb; }
+  .item .ph img { width:100%; height:100%; object-fit:cover; }
+  .item .body { padding:18px 20px 20px; display:flex; flex-direction:column; gap:4px; flex:1; }
+  .item h3 { margin:0; font-family:var(--serif); font-size:21px; font-weight:600; }
+  .item p { margin:0; color:var(--muted); font-size:14px; flex:1; }
+  .item .row { display:flex; justify-content:space-between; align-items:center; margin-top:14px; }
+  .item .pr { font-weight:800; font-size:18px; }
+  .add { background:var(--green); color:#fff; border:0; border-radius:999px; height:40px; padding:0 16px; font:700 14px var(--sans); cursor:pointer; }
+  .add:hover { background:#2a4d3b; }
+  .cart { background:var(--card); border:1px solid var(--line); border-radius:24px; padding:26px; position:sticky; top:20px; }
+  .cart h3 { margin:0 0 14px; font-family:var(--serif); font-size:24px; }
+  .line { display:flex; justify-content:space-between; align-items:center; gap:8px; padding:10px 0; border-bottom:1px dashed var(--line); font-size:15px; font-weight:600; }
+  .qty { display:flex; align-items:center; gap:8px; }
+  .qty button { width:30px; height:30px; border-radius:50%; border:1px solid var(--line); background:#fff; cursor:pointer; font-size:16px; }
+  .total { display:flex; justify-content:space-between; font-weight:800; font-size:19px; margin:16px 0; }
+  .cart label { display:block; font-size:14px; font-weight:700; margin:12px 0 6px; }
+  .cart select, .cart input { width:100%; padding:12px; border:1.5px solid var(--line); border-radius:12px; font:15px var(--sans); background:#fff; }
+  .err { color:#b42318; font-size:14px; min-height:1.3em; }
+  .ok { background:#e5f0e8; border:1px solid #bcd7c4; border-radius:16px; padding:16px; }
+  .empty { color:var(--muted); }
+  .about { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; }
+  .about img { width:100%; aspect-ratio:5/4; object-fit:cover; border-radius:28px; }
+  .about ul { list-style:none; padding:0; margin:28px 0 0; display:grid; gap:20px; }
+  .about li { display:flex; gap:16px; }
+  .about li .ic { flex:none; width:44px; height:44px; border-radius:50%; background:#eadcc8; display:grid; place-items:center; color:var(--brown); }
+  .about li b { display:block; font-size:17px; }
+  .about li span { color:var(--muted); font-size:15px; }
+  .ic svg { width:20px; height:20px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+  footer { padding:36px 0; border-top:1px solid var(--line); color:var(--muted); font-size:14px; }
+  .mobile-cart { display:none; }
+  @media (max-width: 900px) {
+    nav, header .btn { display:none; }
+    .hero, .layout, .about { grid-template-columns:1fr; }
+    .hero { gap:36px; padding-bottom:64px; }
+    .hero-img img { aspect-ratio:4/3.6; border-radius:160px 160px 24px 24px; }
+    .hero-img .float { left:16px; bottom:16px; }
+    .cart { position:static; }
+    section { padding:72px 0; }
+    .mobile-cart { display:flex; position:fixed; bottom:14px; left:14px; right:14px; justify-content:space-between; z-index:5; box-shadow:0 10px 30px -10px rgba(0,0,0,.4); }
+  }
+  @media (max-width: 520px) { .wrap { width:calc(100% - 32px); } }
+</style>
+</head>
+<body>
+<div class="demo-bar">Демопроєкт студії YOUR STUDIO · замовлення є демонстрацією та нікуди не надсилається · <a href="../../cases/coffee.html" target="_top">Про кейс</a></div>
+<header>
+  <div class="wrap">
+    <div class="logo">Coffee <span>Point</span></div>
+    <nav><a href="#menu">Меню</a><a href="#about">Про нас</a><a href="#visit">Як знайти</a></nav>
+    <a href="#menu" class="btn">Замовити з собою</a>
+  </div>
+</header>
+
+<div class="wrap hero">
+  <div>
+    <span class="tag">Speciality coffee · з собою без черги</span>
+    <h1>Кава, яка чекає на вас, <em>а не навпаки</em></h1>
+    <p>Оформіть замовлення онлайн, оберіть час — і заберіть напій без черги. Обсмажуємо зерно щотижня.</p>
+    <div class="actions"><a href="#menu" class="btn">Дивитись меню</a><a href="#about" class="btn light">Про кав'ярню</a></div>
+    <div class="badges"><span><b>7:30–20:00</b>щодня</span><span><b>~5 хв</b>на приготування</span><span><b>0 ₴</b>за рослинне молоко</span></div>
+  </div>
+  <div class="hero-img">
+    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1100&q=70" alt="Капучино з латте-артом">
+    <div class="float"><b>Замовлення №248 готове</b>Каса «Онлайн» · 08:45</div>
+  </div>
+</div>
+
+<section id="menu" style="background:#ede2d3">
+  <div class="wrap">
+    <h2>Меню</h2>
+    <p class="sub">Додайте напої в кошик і оберіть, о котрій заберете.</p>
+    <div class="layout">
+      <div>
+        <div class="cats" id="cats" role="group" aria-label="Категорії"></div>
+        <div class="menu" id="menu-grid"></div>
+      </div>
+      <aside class="cart" id="cart" aria-live="polite"></aside>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about">
+    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1100&q=70" alt="Інтер'єр кав'ярні" loading="lazy">
+    <div>
+      <h2>Чому до нас повертаються</h2>
+      <ul>
+        <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 9h13v5a5 5 0 01-5 5H9a5 5 0 01-5-5z"/><path d="M17 10h1.5a2.5 2.5 0 010 5H17M8 3v3M12 3v3"/></svg></span><span><b>Свіже зерно</b><span>Обсмажуємо невеликими партіями щотижня.</span></span></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 14c0-5 4-9 9-9s9 4 9 9z"/><path d="M3 14h18v2a3 3 0 01-3 3H6a3 3 0 01-3-3z"/></svg></span><span><b>Власна випічка</b><span>Круасани та сирники готуємо щоранку.</span></span></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 21c-4-3-7-7-7-11a7 7 0 0114 0c0 4-3 8-7 11z"/><path d="M12 7v8"/></svg></span><span><b>Рослинне молоко</b><span>Вівсяне, мигдальне, кокосове — без доплати.</span></span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="visit" style="padding-top:0">
+  <div class="wrap">
+    <h2>Як знайти</h2>
+    <p class="sub">вул. Демонстраційна, 5 · щодня 7:30–20:00 · адреса вигадана для демо</p>
+  </div>
+</section>
+
+<footer><div class="wrap">© Coffee Point — демонстраційний сайт. Розроблено YOUR STUDIO. Фото: Unsplash.</div></footer>
+<a href="#cart" class="btn mobile-cart" id="mcart"><span>Кошик</span><span id="mtotal">0 ₴</span></a>
+
+<script>
+const P = id => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=600&h=375&q=65`;
+const ITEMS = [
+  { id:1, cat:"Кава", img:P("1514432324607-a09d9b4aefdd"), name:"Еспресо", d:"Насичений, 30 мл", p:45 },
+  { id:2, cat:"Кава", img:P("1442512595331-e89e73853f31"), name:"Фільтр-кава", d:"Пуровер, зерно тижня, 250 мл", p:65 },
+  { id:3, cat:"Кава", img:P("1541167760496-1628856ab772"), name:"Капучино", d:"Ніжна молочна піна, 300 мл", p:70 },
+  { id:4, cat:"Кава", img:P("1572442388796-11668a67e53d"), name:"Флет-вайт", d:"Подвійний еспресо, 250 мл", p:80 },
+  { id:5, cat:"Холодне", img:P("1461023058943-07fcbe16d735"), name:"Айс-лате", d:"Еспресо, молоко, лід", p:85 },
+  { id:6, cat:"Холодне", img:P("1517701604599-bb29b565090c"), name:"Еспресо-тонік", d:"Тонік, лимон, еспресо", p:90 },
+  { id:7, cat:"Не кава", img:P("1515823064-d6e0c04616a7"), name:"Матча-лате", d:"Японська матча, молоко", p:90 },
+  { id:8, cat:"Не кава", img:P("1542990253-0d0f5be5f0ed"), name:"Какао", d:"Бельгійський шоколад", p:75 },
+];
+const cart = {}; let cat = "Усе"; let done = null;
+const cats = ["Усе", ...new Set(ITEMS.map(i => i.cat))];
+const $ = id => document.getElementById(id);
+const price = id => ITEMS.find(i => i.id == id).p;
+
+function renderCats() { $("cats").innerHTML = cats.map(c => `<button class="cat" data-c="${c}" aria-pressed="${c===cat}">${c}</button>`).join(""); }
+function renderMenu() {
+  $("menu-grid").innerHTML = ITEMS.filter(i => cat === "Усе" || i.cat === cat).map(i =>
+    `<div class="item"><div class="ph"><img src="${i.img}" alt="" loading="lazy"></div><div class="body"><h3>${i.name}</h3><p>${i.d}</p>
+     <div class="row"><span class="pr">${i.p} ₴</span><button class="add" data-add="${i.id}" aria-label="Додати ${i.name}">+ Додати</button></div></div></div>`).join("");
+}
+function slots() {
+  const out = [], d = new Date(); d.setMinutes(Math.ceil((d.getMinutes()+10)/15)*15, 0, 0);
+  for (let k = 0; k < 8; k++) { const h = d.getHours(); if (h >= 7 && h < 20) out.push(d.toTimeString().slice(0,5)); d.setMinutes(d.getMinutes()+15); }
+  return out;
+}
+function renderCart() {
+  const lines = Object.entries(cart).filter(([,q]) => q > 0);
+  const total = lines.reduce((s,[id,q]) => s + price(id) * q, 0);
+  $("mtotal").textContent = total + " ₴";
+  if (done) {
+    $("cart").innerHTML = `<h3>Замовлення №${done.n}</h3><div class="ok">Заберіть о <b>${done.t}</b> на касі «Онлайн».<br>Сума: <b>${done.sum} ₴</b></div>
+      <p style="font-size:13px;color:var(--muted)">Демонстрація: у реальному проєкті замовлення надходить бариста в Telegram або на планшет, оплата — онлайн чи на місці.</p>
+      <button class="btn light" data-new>Нове замовлення</button>`;
+    return;
+  }
+  if (!lines.length) { $("cart").innerHTML = `<h3>Ваше замовлення</h3><p class="empty">Кошик порожній — додайте напої з меню.</p>`; return; }
+  const sl = slots();
+  $("cart").innerHTML = `<h3>Ваше замовлення</h3>` + lines.map(([id,q]) => { const i = ITEMS.find(x => x.id == id);
+      return `<div class="line"><span>${i.name}</span><span class="qty"><button data-dec="${id}" aria-label="Менше">−</button>${q}<button data-add="${id}" aria-label="Більше">+</button></span></div>`; }).join("") +
+    `<div class="total"><span>Разом</span><span>${total} ₴</span></div>
+     <label for="time">Заберу о</label>
+     <select id="time">${sl.length ? sl.map(t => `<option>${t}</option>`).join("") : `<option value="">Сьогодні вже зачинено</option>`}</select>
+     <label for="name">Ім'я</label><input id="name" autocomplete="given-name">
+     <p class="err" id="err"></p>
+     <button class="btn" style="width:100%" data-order ${sl.length ? "" : "disabled"}>Оформити</button>`;
+}
+document.addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  if (b.dataset.c) { cat = b.dataset.c; renderCats(); renderMenu(); }
+  if (b.dataset.add) { cart[b.dataset.add] = (cart[b.dataset.add] || 0) + 1; done = null; renderCart(); }
+  if (b.dataset.dec) { cart[b.dataset.dec]--; renderCart(); }
+  if (b.hasAttribute("data-new")) { done = null; renderCart(); }
+  if (b.hasAttribute("data-order")) {
+    if (!$("name").value.trim()) { $("err").textContent = "Вкажіть ім'я, щоб бариста знав, кому віддати замовлення."; return; }
+    const sum = Object.entries(cart).reduce((s,[id,q]) => s + price(id) * q, 0);
+    done = { n: 100 + Math.floor(Math.random()*900), t: $("time").value, sum };
+    for (const k in cart) delete cart[k];
+    renderCart();
+  }
+});
+renderCats(); renderMenu(); renderCart();
+</script>
+</body>
+</html>

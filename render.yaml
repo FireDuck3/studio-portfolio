@@ -1,0 +1,22 @@
+# Render Blueprint: статичний сайт без збірки.
+# Render → New → Blueprint → оберіть цей репозиторій.
+services:
+  - type: web
+    name: studio-portfolio
+    runtime: static
+    buildCommand: echo "Static site, no build step"
+    staticPublishPath: .
+    pullRequestPreviewsEnabled: false
+    headers:
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN
+      - path: /assets/shots/*
+        name: Cache-Control
+        value: public, max-age=604800

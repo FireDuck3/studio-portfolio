@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smile Clinic — демосайт стоматології</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+  :root { --bg:#ffffff; --soft:#f0f6f8; --ink:#0d2633; --muted:#587080; --teal:#0e8a8c; --teal-d:#0a6d6f; --line:#dbe7ed; --font:"Manrope", system-ui, sans-serif; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); line-height:1.6; }
+  img { display:block; max-width:100%; }
+  .wrap { width:min(100% - 48px, 1200px); margin:auto; }
+  .demo-bar { background:var(--teal); color:#fff; text-align:center; font-size:12.5px; font-weight:600; padding:7px 12px; }
+  .demo-bar a { color:#fff; font-weight:800; }
+  header .wrap { display:flex; justify-content:space-between; align-items:center; padding:18px 0; }
+  .logo { font-weight:800; font-size:21px; display:flex; align-items:center; gap:10px; letter-spacing:-.02em; }
+  .logo i { width:36px; height:36px; border-radius:11px; background:var(--teal); display:grid; place-items:center; color:#fff; }
+  nav { display:flex; gap:30px; font-weight:600; font-size:15px; }
+  nav a { color:var(--ink); text-decoration:none; opacity:.75; }
+  nav a:hover { opacity:1; }
+  .tel { font-weight:700; text-decoration:none; color:var(--ink); }
+  .btn { display:inline-flex; align-items:center; justify-content:center; height:52px; padding:0 26px; background:var(--teal); color:#fff; border:0; border-radius:14px; font:700 15px var(--font); cursor:pointer; text-decoration:none; transition:background .2s; }
+  .btn:hover { background:var(--teal-d); }
+  .btn.out { background:#fff; color:var(--teal); box-shadow:inset 0 0 0 1.5px var(--teal); }
+  .svg { width:22px; height:22px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+  .hero { background:var(--soft); padding:56px 0 0; overflow:hidden; }
+  .hero .wrap { display:grid; grid-template-columns:1.05fr .95fr; gap:48px; align-items:end; }
+  .hero-copy { padding-bottom:72px; }
+  .pill { display:inline-flex; align-items:center; gap:8px; padding:8px 14px; border-radius:999px; background:#fff; font-weight:700; font-size:13px; color:var(--teal); margin-bottom:22px; }
+  .hero h1 { font-size:clamp(36px,5vw,62px); line-height:1.05; margin:0 0 20px; letter-spacing:-.035em; }
+  .hero p { font-size:19px; color:var(--muted); margin:0 0 30px; max-width:520px; }
+  .hero .actions { display:flex; gap:12px; flex-wrap:wrap; }
+  .trust { display:flex; gap:28px; margin-top:44px; flex-wrap:wrap; }
+  .trust div { display:flex; gap:12px; align-items:center; font-size:14px; color:var(--muted); }
+  .trust b { display:block; color:var(--ink); font-size:15px; }
+  .trust .ic { width:42px; height:42px; border-radius:12px; background:#fff; color:var(--teal); display:grid; place-items:center; }
+  .hero-img { position:relative; }
+  .hero-img img { width:100%; aspect-ratio:4/4.2; object-fit:cover; border-radius:28px 28px 0 0; }
+  .hero-img .card { position:absolute; left:-32px; bottom:40px; background:#fff; border-radius:18px; padding:16px 18px; box-shadow:0 20px 40px -20px rgba(13,38,51,.35); display:flex; gap:12px; align-items:center; font-size:14px; }
+  .hero-img .card b { display:block; font-size:15px; }
+  .hero-img .card .ic { width:40px; height:40px; border-radius:50%; background:#e2f3f1; color:var(--teal); display:grid; place-items:center; }
+  section { padding:96px 0; }
+  h2 { font-size:clamp(30px,3.6vw,44px); margin:0 0 10px; letter-spacing:-.03em; line-height:1.1; }
+  .sub { color:var(--muted); margin:0 0 40px; max-width:620px; font-size:17px; }
+  .svc { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+  .svc div { border:1px solid var(--line); border-radius:20px; padding:28px; transition:border-color .2s, box-shadow .2s; }
+  .svc div:hover { border-color:var(--teal); box-shadow:0 16px 30px -20px rgba(14,138,140,.5); }
+  .svc .ic { width:48px; height:48px; border-radius:14px; background:#e2f3f1; color:var(--teal); display:grid; place-items:center; }
+  .svc h3 { margin:18px 0 6px; font-size:20px; letter-spacing:-.02em; }
+  .svc p { margin:0; color:var(--muted); font-size:15px; }
+  .svc .from { margin-top:16px; font-weight:800; color:var(--teal); }
+  .calc { background:var(--soft); }
+  .calc-box { display:grid; grid-template-columns:1fr 360px; gap:28px; }
+  .opts { display:grid; gap:10px; }
+  .opt { display:flex; justify-content:space-between; align-items:center; gap:12px; background:#fff; border:1.5px solid var(--line); border-radius:16px; padding:16px 20px; cursor:pointer; font-weight:600; }
+  .opt:has(input:checked) { border-color:var(--teal); }
+  .opt input[type=checkbox] { width:20px; height:20px; accent-color:var(--teal); }
+  .opt .l { display:flex; gap:12px; align-items:center; }
+  .opt input[type=number] { width:64px; padding:6px 8px; border:1px solid var(--line); border-radius:8px; font:15px var(--font); }
+  .sum { background:#fff; border-radius:22px; padding:30px; border:1px solid var(--line); align-self:start; position:sticky; top:20px; }
+  .sum .big { font-size:40px; font-weight:800; color:var(--teal); letter-spacing:-.03em; }
+  .sum small { color:var(--muted); display:block; }
+  .docs { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+  .doc { border-radius:22px; overflow:hidden; background:var(--soft); }
+  .doc img { width:100%; aspect-ratio:4/3.4; object-fit:cover; }
+  .doc div.t { padding:20px 22px 24px; }
+  .doc h3 { margin:0; font-size:19px; }
+  .doc p { margin:2px 0 0; color:var(--muted); font-size:15px; }
+  form.book { display:grid; grid-template-columns:1fr 1fr; gap:16px; max-width:780px; background:#fff; padding:32px; border-radius:22px; border:1px solid var(--line); }
+  form.book .full { grid-column:1/-1; }
+  form.book label { display:grid; gap:6px; font-weight:700; font-size:14px; }
+  form.book input, form.book select { padding:14px; border:1.5px solid var(--line); border-radius:12px; font:15px var(--font); background:#fff; }
+  .err { color:#b42318; font-size:14px; min-height:1.3em; margin:0; }
+  .ok { background:#e4f5f2; border:1px solid #bfe4dd; border-radius:20px; padding:28px; max-width:780px; }
+  footer { padding:34px 0; border-top:1px solid var(--line); color:var(--muted); font-size:14px; }
+  @media (max-width: 900px) {
+    nav, .tel { display:none; }
+    .hero .wrap, .calc-box { grid-template-columns:1fr; }
+    .hero-copy { padding-bottom:0; }
+    .hero-img .card { left:16px; bottom:16px; }
+    .svc, .docs { grid-template-columns:1fr; }
+    form.book { grid-template-columns:1fr; padding:22px; }
+    .sum { position:static; }
+    section { padding:72px 0; }
+  }
+  @media (max-width: 520px) { .wrap { width:calc(100% - 32px); } header .btn { display:none; } }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="tooth" viewBox="0 0 24 24"><path d="M7 3c-2.5 0-4 2-4 4.5 0 3 1.5 4.5 2 7 .5 2.5 1 6.5 2.5 6.5S9.5 17 12 17s3 4 4.5 4 2-4 2.5-6.5 2-4 2-7C21 5 19.5 3 17 3c-2 0-3 1-5 1S9 3 7 3z"/></symbol>
+  <symbol id="spark" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></symbol>
+  <symbol id="smile" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9.5h.01M15 9.5h.01"/></symbol>
+  <symbol id="implant" viewBox="0 0 24 24"><path d="M8 3h8l-1 5H9z"/><path d="M9 8l1 13h4l1-13M9.5 12h5M10 16h4"/></symbol>
+  <symbol id="brace" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="8" rx="3"/><path d="M3 12h18M8 8v8M12 8v8M16 8v8"/></symbol>
+  <symbol id="kid" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-4 3-7 7-7s7 3 7 7"/></symbol>
+  <symbol id="doc" viewBox="0 0 24 24"><path d="M14 3H6v18h12V7z"/><path d="M14 3v4h4M9 13h6M9 17h6"/></symbol>
+  <symbol id="shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-4.5"/></symbol>
+  <symbol id="cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+</svg>
+<div class="demo-bar">Демопроєкт студії YOUR STUDIO · ціни та лікарі вигадані, заявка нікуди не надсилається · <a href="../../cases/dental.html" target="_top">Про кейс</a></div>
+<header>
+  <div class="wrap">
+    <div class="logo"><i><svg class="svg" style="width:20px;height:20px"><use href="#tooth"/></svg></i>Smile Clinic</div>
+    <nav><a href="#services">Послуги</a><a href="#calc">Вартість</a><a href="#doctors">Лікарі</a><a href="#book">Запис</a></nav>
+    <a class="tel" href="#book">+38 (000) 000-00-00</a>
+    <a href="#book" class="btn">Записатися</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="pill"><svg class="svg" style="width:16px;height:16px"><use href="#spark"/></svg>Перша консультація — безкоштовно</span>
+      <h1>Лікування без болю та прихованих доплат</h1>
+      <p>Сучасна стоматологія для всієї родини. Розрахуйте орієнтовну вартість онлайн і запишіться на консультацію.</p>
+      <div class="actions"><a href="#book" class="btn">Записатися на консультацію</a><a href="#calc" class="btn out">Розрахувати вартість</a></div>
+      <div class="trust">
+        <div><span class="ic"><svg class="svg"><use href="#doc"/></svg></span><span><b>План лікування</b>з цінами до початку</span></div>
+        <div><span class="ic"><svg class="svg"><use href="#shield"/></svg></span><span><b>Гарантія</b>за договором</span></div>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1000&q=70" alt="Кабінет клініки">
+      <div class="card"><span class="ic"><svg class="svg"><use href="#cal"/></svg></span><span><b>Найближчий запис</b>Сьогодні, 16:30</span></div>
+    </div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <h2>Послуги</h2>
+    <p class="sub">Від профілактики до складних випадків — в одній клініці.</p>
+    <div class="svc">
+      <div><span class="ic"><svg class="svg"><use href="#tooth"/></svg></span><h3>Терапія</h3><p>Лікування карієсу, пломби, лікування каналів.</p><div class="from">від 900 ₴</div></div>
+      <div><span class="ic"><svg class="svg"><use href="#spark"/></svg></span><h3>Гігієна</h3><p>Професійна чистка, Air Flow, фторування.</p><div class="from">від 1 200 ₴</div></div>
+      <div><span class="ic"><svg class="svg"><use href="#smile"/></svg></span><h3>Відбілювання</h3><p>Кабінетне та домашнє відбілювання.</p><div class="from">від 4 500 ₴</div></div>
+      <div><span class="ic"><svg class="svg"><use href="#implant"/></svg></span><h3>Імплантація</h3><p>Імпланти під ключ з 3D-плануванням.</p><div class="from">від 18 000 ₴</div></div>
+      <div><span class="ic"><svg class="svg"><use href="#brace"/></svg></span><h3>Ортодонтія</h3><p>Брекети та елайнери для дорослих і дітей.</p><div class="from">від 25 000 ₴</div></div>
+      <div><span class="ic"><svg class="svg"><use href="#kid"/></svg></span><h3>Дитяча</h3><p>Лікування молочних зубів, адаптаційний візит.</p><div class="from">від 700 ₴</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="calc" class="calc">
+  <div class="wrap">
+    <h2>Калькулятор орієнтовної вартості</h2>
+    <p class="sub">Оберіть процедури — точну ціну лікар назве після огляду.</p>
+    <div class="calc-box">
+      <div class="opts" id="opts"></div>
+      <div class="sum" aria-live="polite">
+        <small>Орієнтовно</small>
+        <div class="big" id="total">0 ₴</div>
+        <small id="cnt">Нічого не обрано</small>
+        <p style="font-size:14px;color:var(--muted)">Консультація та план лікування — безкоштовно.</p>
+        <a href="#book" class="btn" style="width:100%">Записатися з цим планом</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="doctors">
+  <div class="wrap">
+    <h2>Лікарі та клініка</h2>
+    <p class="sub">Персонажі вигадані для демонстрації.</p>
+    <div class="docs">
+      <div class="doc"><img src="https://images.unsplash.com/photo-1606265752439-1f18756aa5fc?auto=format&fit=crop&w=700&q=70" alt="Лікарка-стоматологиня" loading="lazy"><div class="t"><h3>Олена К.</h3><p>Терапевт · 12 років досвіду</p></div></div>
+      <div class="doc"><img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=700&q=70" alt="Лікар із рентгенівським знімком" loading="lazy"><div class="t"><h3>Дмитро М.</h3><p>Хірург-імплантолог · 9 років</p></div></div>
+      <div class="doc"><img src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=700&q=70" alt="Стоматологічний кабінет" loading="lazy"><div class="t"><h3>Сучасне обладнання</h3><p>3D-діагностика та мікроскоп</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="book" style="background:var(--soft)">
+  <div class="wrap">
+    <h2>Запис на консультацію</h2>
+    <p class="sub">Адміністратор зателефонує, щоб підтвердити час.</p>
+    <div id="book-area">
+      <form class="book" id="book-form" novalidate>
+        <label>Ім'я<input name="name" autocomplete="name"></label>
+        <label>Телефон<input name="phone" type="tel" inputmode="tel" placeholder="+380"></label>
+        <label>Напрям<select name="dir"><option>Консультація</option><option>Терапія</option><option>Гігієна</option><option>Відбілювання</option><option>Імплантація</option><option>Ортодонтія</option><option>Дитяча</option></select></label>
+        <label>Бажана дата<input name="date" type="date"></label>
+        <p class="err full" id="berr"></p>
+        <div class="full"><button class="btn" type="submit">Записатися</button></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">© Smile Clinic — демонстраційний сайт. Розроблено YOUR STUDIO. Фото: Unsplash.</div></footer>
+
+<script>
+const PROC = [
+  { id:"cons", name:"Консультація та план лікування", p:0 },
+  { id:"clean", name:"Професійна гігієна", p:1200 },
+  { id:"fill", name:"Пломба (за зуб)", p:1500, qty:true },
+  { id:"canal", name:"Лікування каналу (за зуб)", p:3200, qty:true },
+  { id:"white", name:"Відбілювання", p:4500 },
+  { id:"impl", name:"Імплант під ключ (за зуб)", p:18000, qty:true },
+];
+const opts = document.getElementById("opts");
+opts.innerHTML = PROC.map(x => `<label class="opt"><span class="l"><input type="checkbox" data-id="${x.id}">${x.name}</span>
+  <span class="l">${x.qty ? `<input type="number" min="1" max="16" value="1" data-q="${x.id}" aria-label="Кількість">` : ""}<b>${x.p ? x.p.toLocaleString("uk-UA") + " ₴" : "безкоштовно"}</b></span></label>`).join("");
+function calc() {
+  let t = 0, n = 0;
+  PROC.forEach(x => {
+    if (opts.querySelector(`[data-id="${x.id}"]`).checked) {
+      const q = x.qty ? Math.max(1, Math.min(16, +opts.querySelector(`[data-q="${x.id}"]`).value || 1)) : 1;
+      t += x.p * q; n++;
+    }
+  });
+  document.getElementById("total").textContent = t.toLocaleString("uk-UA") + " ₴";
+  document.getElementById("cnt").textContent = n ? `Обрано процедур: ${n}` : "Нічого не обрано";
+}
+opts.addEventListener("input", calc);
+
+const f = document.getElementById("book-form");
+f.date.min = new Date().toISOString().slice(0,10);
+f.addEventListener("submit", e => {
+  e.preventDefault();
+  const name = f.name.value.trim(), phone = f.phone.value.replace(/\D/g, "");
+  if (!name || phone.length < 10) { document.getElementById("berr").textContent = "Вкажіть ім'я та коректний номер телефону."; return; }
+  const d = f.date.value ? new Date(f.date.value).toLocaleDateString("uk-UA", { day:"numeric", month:"long" }) : "найближчий вільний день";
+  const area = document.getElementById("book-area");
+  area.innerHTML = `<div class="ok"><h3 style="margin-top:0">Заявку прийнято</h3><p></p>
+    <p style="color:var(--muted);font-size:14px">Демонстрація: у реальному проєкті заявка надходить адміністратору в CRM або Telegram, і він передзвонює для підтвердження.</p></div>`;
+  area.querySelector("p").textContent = `${name}, напрям: ${f.dir.value}, бажана дата: ${d}.`;
+});
+</script>
+</body>
+</html>
