@@ -451,3 +451,8 @@ a.shot.combo:hover .phone-s { transform: translateY(-16px); }
   .mobile-stage .phone-s:not(.live) { display: none; }
   .mobile-stage .phone-s.live { width: min(100%, 280px); }
 }
+
+/* пастка для ботів у формі заявки */
+.hp { position: absolute !important; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.quiz { position: relative; }
+.quiz-error a { color: inherit; }

@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SITE = "https://studio-portfolio-xwlc.onrender.com"; // замініть на свій домен
-const V = "10"; // версія CSS/JS — збільшуйте після змін, щоб скинути кеш
+const V = "11"; // версія CSS/JS — збільшуйте після змін, щоб скинути кеш
 
 const CASES = [
   {

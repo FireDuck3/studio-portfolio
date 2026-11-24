@@ -1,9 +1,11 @@
 /* ==== НАЛАШТУВАННЯ ====
-   FORM_ENDPOINT — адреса, куди відправляти заявки (наприклад, Formspree, Getform,
-   або ваш власний обробник, що пересилає в Telegram). Поки порожньо — форма
-   відкриває поштовий клієнт із заповненим листом на CONTACT_EMAIL. */
-const FORM_ENDPOINT = "";
+   Заявки з квізу надсилаються на пошту через FormSubmit (formsubmit.co) — без сервера й реєстрації.
+   Перша заявка надсилає на CONTACT_EMAIL лист «Activate Form»: після підтвердження заявки
+   приходять на пошту. Після активації FormSubmit дає секретний код — його можна вставити
+   замість адреси в FORM_ENDPOINT, щоб пошта не світилась у коді.
+   Якщо FORM_ENDPOINT порожній — форма відкриває поштовий клієнт із готовим листом. */
 const CONTACT_EMAIL = "danilo.formos@gmail.com";
+const FORM_ENDPOINT = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`;
 
 /* Аналітика: підключіть GA4 або Plausible — події підуть туди. */
 function track(name, data = {}) {
@@ -117,10 +119,13 @@ if (quiz) {
     if (i < steps.length - 1) { i++; render(); steps[i].querySelector("input")?.focus(); return; }
 
     const fd = new FormData(quiz);
+    const TYPES = { landing: "Лендинг", services: "Сайт послуг", shop: "Інтернет-магазин", unknown: "Ще не знає — потрібна консультація" };
     const data = {
-      type: fd.get("type"), features: fd.getAll("features").join(", "), when: fd.get("when"),
-      name: fd.get("name"), contact: fd.get("contact"), comment: fd.get("comment") || "", source: location.href,
+      type: TYPES[fd.get("type")] || fd.get("type"), features: fd.getAll("features").join(", "), when: fd.get("when"),
+      name: fd.get("name").trim(), contact: fd.get("contact").trim(), comment: (fd.get("comment") || "").trim(), source: location.href,
     };
+    // Пастка для ботів: людина це поле не бачить і не заповнює
+    if (fd.get("_honey")) return;
     next.disabled = true;
     nextLabel.textContent = "Надсилаємо…";
     const doneText = done.querySelector("[data-done-text]");
@@ -129,9 +134,22 @@ if (quiz) {
         const res = await fetch(FORM_ENDPOINT, {
           method: "POST",
           headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify(data),
+          body: JSON.stringify({
+            "Ім'я": data.name,
+            "Контакт": data.contact,
+            "Тип сайту": data.type,
+            "Функції": data.features,
+            "Запуск": data.when,
+            "Коментар": data.comment || "—",
+            "Сторінка": data.source,
+            _subject: `Нова заявка з сайту: ${data.name} — ${data.type}`,
+            _template: "table",
+            _captcha: "false",
+            _honey: "",
+          }),
         });
-        if (!res.ok) throw new Error(res.status);
+        const json = await res.json().catch(() => ({}));
+        if (!res.ok || !(json.success === true || json.success === "true")) throw new Error(json.message || res.status);
         doneText.textContent = "Заявку отримано. Ми напишемо вам протягом одного робочого дня, щоб узгодити час консультації.";
       } else {
         const body = `Тип сайту: ${data.type}\nФункції: ${data.features}\nЗапуск: ${data.when}\nІм'я: ${data.name}\nКонтакт: ${data.contact}\nКоментар: ${data.comment}`;
@@ -143,7 +161,8 @@ if (quiz) {
       done.classList.remove("hidden");
       done.focus();
     } catch (ex) {
-      err.textContent = "Не вдалося надіслати. Спробуйте ще раз або напишіть нам у Telegram.";
+      console.warn("Form submit failed:", ex);
+      err.innerHTML = `Не вдалося надіслати заявку. Спробуйте ще раз або напишіть нам у <a href="https://t.me/Nice_sh0t" target="_blank" rel="noopener">Telegram</a> чи на <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>.`;
       next.disabled = false;
       nextLabel.textContent = "Надіслати заявку";
     }
