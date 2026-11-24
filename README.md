@@ -13,7 +13,7 @@
 
 ## Що замінити перед запуском
 1. **YOUR·STUDIO** → назва студії (пошук по всіх файлах).
-2. `assets/main.js`: `CONTACT_EMAIL` і `FORM_ENDPOINT` (Formspree / Getform / свій обробник у Telegram). Поки `FORM_ENDPOINT` порожній, квіз відкриває пошту з готовим листом.
+2. `assets/main.js`: `FORM_ENDPOINT` (Formspree / Getform / свій обробник у Telegram). Поки `FORM_ENDPOINT` порожній, квіз відкриває пошту з готовим листом.
 3. `index.html`: Telegram, email, ціни пакетів, реквізити ФОП у футері.
 4. `tools/build-cases.mjs`: `SITE` (ваш домен), тексти кейсів.
 
@@ -36,4 +36,4 @@ node tools/build-cases.mjs
 Кнопки мають атрибут `data-track`. Підключіть GA4 (`gtag`) або Plausible — події (`demo_open`, `lead_submit`, `cta_*`) підуть туди автоматично.
 
 ## Після оновлення CSS/JS
-Збільште `?v=9` (і `V` у `tools/build-cases.mjs`) у посиланнях на `styles.css` / `main.js`, щоб у відвідувачів не лишилась стара версія з кешу.
+Збільште `?v=10` (і `V` у `tools/build-cases.mjs`) у посиланнях на `styles.css` / `main.js`, щоб у відвідувачів не лишилась стара версія з кешу.

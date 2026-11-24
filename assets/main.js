@@ -3,7 +3,7 @@
    або ваш власний обробник, що пересилає в Telegram). Поки порожньо — форма
    відкриває поштовий клієнт із заповненим листом на CONTACT_EMAIL. */
 const FORM_ENDPOINT = "";
-const CONTACT_EMAIL = "hello@yourstudio.com";
+const CONTACT_EMAIL = "danilo.formos@gmail.com";
 
 /* Аналітика: підключіть GA4 або Plausible — події підуть туди. */
 function track(name, data = {}) {

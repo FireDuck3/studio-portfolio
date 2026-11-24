@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SITE = "https://studio-portfolio-xwlc.onrender.com"; // замініть на свій домен
-const V = "9"; // версія CSS/JS — збільшуйте після змін, щоб скинути кеш
+const V = "10"; // версія CSS/JS — збільшуйте після змін, щоб скинути кеш
 
 const CASES = [
   {
@@ -164,8 +164,8 @@ function page(c) {
     </ol>
   </nav>
   <div class="menu-contacts">
-    <div><small>Telegram</small><a href="https://t.me/yourstudio" target="_blank" rel="noopener">@yourstudio</a></div>
-    <div><small>Email</small><a href="mailto:hello@yourstudio.com">hello@yourstudio.com</a></div>
+    <div><small>Telegram</small><a href="https://t.me/Nice_sh0t" target="_blank" rel="noopener">@Nice_sh0t</a></div>
+    <div><small>Email</small><a href="mailto:danilo.formos@gmail.com">danilo.formos@gmail.com</a></div>
     <div><small>Графік</small>Пн–Пт, 10:00–19:00</div>
   </div>
 </div>
@@ -283,7 +283,7 @@ ${others.map((o) => `        <article class="work">
     <div class="wordmark" aria-hidden="true"><span>YOUR</span><i></i><span>STUDIO</span></div>
     <div class="footer-bottom" style="border-top:0">
       <span>© <span data-year></span> YOUR STUDIO</span>
-      <span><a href="https://t.me/yourstudio" target="_blank" rel="noopener">Telegram</a> · <a href="mailto:hello@yourstudio.com">hello@yourstudio.com</a></span>
+      <span><a href="https://t.me/Nice_sh0t" target="_blank" rel="noopener">Telegram</a> · <a href="mailto:danilo.formos@gmail.com">danilo.formos@gmail.com</a></span>
     </div>
   </div>
 </footer>
